@@ -4,9 +4,36 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Integrador JS</title>
   </head>
   <body>
+    <!-- HEADER  -->
+    <header class="header_container">
+      <div class="header_wrapper">
+        <div class="header_search">
+          <input
+            class="header_input"
+            placeholder="Ingrese un elemento.."
+            type="text"
+          />
+          <button class="header_btn_search">Buscar</button>
+        </div>
+        <div class="header_add">
+          <button class="header_btn_add">Agregar elemento</button>
+        </div>
+      </div>
+    </header>
+    <!-- MAIN  -->
+    <main class="main_container">
+      <div class="main_categories">
+        <aside>
+          <h2>Categorías</h2>
+          <ul id="listFilter"></ul>
+        </aside>
+      </div>
+      <div class="main_products"></div>
+    </main>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
