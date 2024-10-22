@@ -1,6 +1,9 @@
-import { setInLocalStorage } from "./src/persistence/localStorage";
+import {
+  getProductLocalStorage,
+  setInLocalStorage,
+} from "./src/persistence/localStorage";
 import { renderCategories } from "./src/services/categories";
-import { viewGetProducts } from "./src/views/store";
+import { renderListProducts, viewGetProducts } from "./src/views/store";
 import "./style.css";
 
 renderCategories();
@@ -106,3 +109,14 @@ export const setProductoActivo = (productIn) => {
 // Traigo button search
 
 const buttonSearch = document.getElementById("header_button_search");
+
+buttonSearch.addEventListener("click", () => {
+  const inputHeaderSearch = document.getElementById("header_input_search");
+  const allProducts = getProductLocalStorage();
+  // console.log(inputHeaderSearch.value);
+  const result = allProducts.filter((el) =>
+    el.nombre.toLowerCase().includes(inputHeaderSearch.value)
+  );
+
+  renderListProducts(result);
+});
