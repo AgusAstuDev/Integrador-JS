@@ -20,19 +20,53 @@
           <button class="header_btn_search">Buscar</button>
         </div>
         <div class="header_add">
-          <button class="header_btn_add">Agregar elemento</button>
+          <button id="header_btn_add" class="header_btn_add">
+            Agregar elemento
+          </button>
         </div>
       </div>
     </header>
     <!-- MAIN  -->
     <main class="main_container">
-      <div class="main_categories">
-        <aside>
-          <h2>Categorías</h2>
-          <ul id="listFilter"></ul>
-        </aside>
+      <div class="main_view">
+        <div class="main_categories">
+          <aside>
+            <h2>Categorías</h2>
+            <ul id="listFilter"></ul>
+          </aside>
+        </div>
+        <div class="main_products"></div>
       </div>
-      <div class="main_products"></div>
+      <!-- POPUP -->
+      <div class="popup_container" id="modal_popup">
+        <div class="popup_contain_container">
+          <div>
+            <h2>Agregar o modificar producto</h2>
+          </div>
+          <div class="popup_container_inputs">
+            <input placeholder="Ingrese un nombre" id="nombre" type="text" />
+            <input placeholder="Precio" value="0" id="precio" type="number" />
+            <input placeholder="Ingrese una imagen" id="img" type="text" />
+            <select id="categoria">
+              <option>Seleccione una categoria</option>
+              <option>Gaseosa</option>
+              <option>Hamburguesas</option>
+              <option>Papas</option>
+            </select>
+          </div>
+          <div>
+            <button id="popup_btn_accept" class="popup_button aceptar">
+              Aceptar
+            </button>
+            <button id="popup_btn_close" class="popup_button cancelar">
+              Cancelar
+            </button>
+            <button id="popup_btn_delete" class="popup_button eliminar">
+              Eliminar
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
     <script type="module" src="/main.js"></script>
   </body>
