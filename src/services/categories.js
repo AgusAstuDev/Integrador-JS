@@ -1,3 +1,36 @@
+import { categoriaActiva } from "../../main";
+import { getProductLocalStorage } from "../persistence/localStorage";
+import { renderListProducts } from "../views/store";
+
+const filterByCategory = (categoryIn) => {
+  const allProducts = getProductLocalStorage();
+
+  switch (categoryIn) {
+    case categoriaActiva:
+      renderListProducts(allProducts);
+      break;
+    case "Todo":
+      renderListProducts(allProducts);
+      break;
+    case "Hamburguesas":
+    case "Papas":
+    case "Gaseosas":
+      const result = allProducts.filter((el) => el.categoria === categoryIn);
+      renderListProducts(result);
+      break;
+    case "Mayor_precio":
+      const resultMayor = allProducts.sort((a, b) => b.precio - a.precio);
+      renderListProducts(resultMayor);
+      break;
+    case "Menor_precio":
+      const resultMenor = allProducts.sort((a, b) => a.precio - b.precio);
+      renderListProducts(resultMenor);
+      break;
+    default:
+      break;
+  }
+};
+
 export const renderCategories = () => {
   // Creación de los elementos
   const ulList = document.querySelector("#listFilter");
@@ -21,6 +54,7 @@ export const renderCategories = () => {
   });
   // Manejo el evento de clic agregando o sacando liActive condicionalmente
   const handleClick = (elemento) => {
+    filterByCategory(elemento.id);
     liElements.forEach((el) => {
       if (el.classList.contains("liActive")) {
         el.classList.remove("liActive");

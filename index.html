@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Integrador JS</title>
   </head>
+
   <body>
     <!-- HEADER  -->
     <header class="header_container">
@@ -17,7 +18,9 @@
             placeholder="Ingrese un elemento.."
             type="text"
           />
-          <button class="header_btn_search">Buscar</button>
+          <button id="header_button_search" class="header_btn_search">
+            Buscar
+          </button>
         </div>
         <div class="header_add">
           <button id="header_btn_add" class="header_btn_add">
@@ -26,17 +29,22 @@
         </div>
       </div>
     </header>
+
     <!-- MAIN  -->
     <main class="main_container">
+      <!-- VIEW -->
       <div class="main_view">
+        <!-- VIEW CATEGORÍAS -->
         <div class="main_categories">
           <aside>
             <h2>Categorías</h2>
             <ul id="listFilter"></ul>
           </aside>
         </div>
-        <div class="main_products"></div>
+        <!-- VIEW STORE -->
+        <div id="store_containerId" class="main_store"></div>
       </div>
+
       <!-- POPUP -->
       <div class="popup_container" id="modal_popup">
         <div class="popup_contain_container">

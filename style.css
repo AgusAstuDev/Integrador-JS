@@ -47,7 +47,7 @@ body {
   height: auto;
   background-color: blueviolet;
 }
-.main_products {
+.main_store {
   width: 100%;
   height: auto;
   background-color: brown;
@@ -58,7 +58,7 @@ body {
 }
 
 .popup_container {
-  display: flex;
+  display: none;
   position: absolute;
   width: 100vw;
   height: 100vh;

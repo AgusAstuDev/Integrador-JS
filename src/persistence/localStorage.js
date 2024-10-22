@@ -1,6 +1,6 @@
 // LOCALE STORAGE
 
-export const handleGetProductLocalStorage = () => {
+export const getProductLocalStorage = () => {
   const products = JSON.parse(localStorage.getItem("products"));
   if (products) {
     return products;
@@ -10,7 +10,7 @@ export const handleGetProductLocalStorage = () => {
 };
 
 export const setInLocalStorage = (productIn) => {
-  let productsInLocal = handleGetProductLocalStorage();
+  let productsInLocal = getProductLocalStorage();
 
   const verifyExistIndex = productsInLocal.findIndex(
     (productsLocal) => productsLocal.id === productIn.id
