@@ -34,6 +34,10 @@ export const openModal = () => {
     precio.value = productoActivo.precio;
     img.value = productoActivo.img;
     categoria.value = productoActivo.categoria;
+
+    deleteButton.style.display = "block";
+  } else {
+    deleteButton.style.display = "none";
   }
 };
 
