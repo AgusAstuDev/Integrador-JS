@@ -120,3 +120,16 @@ buttonSearch.addEventListener("click", () => {
 
   renderListProducts(result);
 });
+
+// Eliminar producto
+
+const deleteButton = document.getElementById("popup_btn_delete");
+
+deleteButton.addEventListener("click", () => {
+  const allProducts = getProductLocalStorage();
+  const resultDelete = allProducts.filter((el) => el.id !== productoActivo.id);
+  localStorage.setItem("products", JSON.stringify(resultDelete));
+  const NewProducts = getProductLocalStorage();
+  renderListProducts(NewProducts);
+  closeModal();
+});
