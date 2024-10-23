@@ -129,12 +129,23 @@ const handleSaveModifyProduct = () => {
 
 // LÓGICA DE LA BÚSQUEDA
 const buttonSearch = document.getElementById("header_button_search");
+const inputSearchCamp = document.getElementById("header_input_search");
+
+inputSearchCamp.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const allProducts = getProductLocalStorage();
+    const result = allProducts.filter((el) =>
+      el.nombre.toLowerCase().includes(inputSearchCamp.value.toLowerCase())
+    );
+
+    renderListProducts(result);
+  }
+});
 
 buttonSearch.addEventListener("click", () => {
-  const inputHeaderSearch = document.getElementById("header_input_search");
   const allProducts = getProductLocalStorage();
   const result = allProducts.filter((el) =>
-    el.nombre.toLowerCase().includes(inputHeaderSearch.value.toLowerCase())
+    el.nombre.toLowerCase().includes(inputSearchCamp.value.toLowerCase())
   );
 
   renderListProducts(result);

@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Integrador JS</title>
+    <title>Food.js</title>
   </head>
 
   <body>
@@ -13,20 +13,23 @@
     <header class="header_container">
       <div class="header_wrapper">
         <div class="header_search">
+          <button id="header_button_search">
+            <img src="/assets/search_product.svg" width="30" height="30" />
+          </button>
           <input
             id="header_input_search"
-            class="header_input_search"
-            placeholder="Ingrese un elemento.."
+            placeholder="Busca un producto..."
             type="text"
           />
-          <button id="header_button_search" class="header_btn_search">
-            Buscar
-          </button>
         </div>
         <div class="header_add">
           <button id="header_btn_add" class="header_btn_add">
-            Agregar elemento
+            <p>Añadir producto</p>
+            <img src="/assets/add_product.svg" width="60" height="60" />
           </button>
+        </div>
+        <div class="header_logo_container">
+          <img src="/assets/logo_food.png" width="434" height="469" />
         </div>
       </div>
     </header>

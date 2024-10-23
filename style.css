@@ -1,10 +1,9 @@
+/* GENERALES  */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: whitesmoke;
 }
-
 body {
   max-width: 100vw;
   min-height: 100vh;
@@ -12,26 +11,102 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-
+/* HEADER  */
 .header_container {
   width: 100%;
   height: auto;
 }
 .header_wrapper {
+  position: relative;
   width: 100%;
   height: auto;
   padding: 30px 20px;
   display: flex;
   align-items: center;
-  background-color: cadetblue;
+  justify-content: space-between;
+  background-color: #1d1818;
 }
 .header_search {
-  width: max-content;
+  width: 100%;
+  max-width: 200px;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+  border: solid 1px white;
+  border-radius: 10px;
 }
+.header_search button {
+  width: 100%;
+  max-width: 22px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  margin-right: 5px;
+}
+.header_search button img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  object-fit: cover;
+}
+.header_search input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+}
+.header_search input::placeholder {
+  color: rgba(255, 255, 255, 0.655);
+}
+.header_logo_container {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+.header_add {
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+}
+.header_btn_add {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.header_logo_container img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  object-fit: cover;
+}
+.header_btn_add img {
+  width: 100%;
+  max-width: 40px;
+  height: auto;
+  display: flex;
+  object-fit: cover;
+}
+.header_btn_add p {
+  color: white;
+  font-size: 16px;
+  margin-right: 10px;
+}
+.header_btn_add p:hover {
+  text-decoration: underline;
+}
+
+/* MAIN  */
 .main_container {
   width: 100%;
   height: 100vh;
