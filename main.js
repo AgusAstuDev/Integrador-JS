@@ -64,6 +64,8 @@ const resetModal = () => {
 const acceptButton = document.getElementById("popup_btn_accept");
 acceptButton.addEventListener("click", () => {
   handleSaveModifyProduct();
+  const allProducts = getProductLocalStorage();
+  renderListProducts(allProducts);
 });
 
 const handleSaveModifyProduct = () => {

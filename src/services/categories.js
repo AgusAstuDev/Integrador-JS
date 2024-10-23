@@ -2,20 +2,22 @@ import { categoriaActiva } from "../../main";
 import { getProductLocalStorage } from "../persistence/localStorage";
 import { renderListProducts } from "../views/store";
 
-const filterByCategory = (categoryIn) => {
+// Función que filtra por categoría pasando el id
+const filterByCategory = (idCategory) => {
+  // Traigo todos mis elementos de localeStorage
   const allProducts = getProductLocalStorage();
 
-  switch (categoryIn) {
-    case categoriaActiva:
-      renderListProducts(allProducts);
-      break;
+  switch (idCategory) {
+    // case categoriaActiva:
+    //   renderListProducts(allProducts);
+    //   break;
     case "Todo":
       renderListProducts(allProducts);
       break;
     case "Hamburguesas":
     case "Papas":
     case "Gaseosas":
-      const result = allProducts.filter((el) => el.categoria === categoryIn);
+      const result = allProducts.filter((el) => el.categoria === idCategory);
       renderListProducts(result);
       break;
     case "Mayor_precio":
@@ -31,9 +33,11 @@ const filterByCategory = (categoryIn) => {
   }
 };
 
+// Función que renderiza las categorías
 export const renderCategories = () => {
-  // Creación de los elementos
-  const ulList = document.querySelector("#listFilter");
+  // Traigo el contenedor de mi lista
+  const ulList = document.getElementById("listFilter");
+
   ulList.innerHTML = `
     <li id="Todo">Todos los productos</li> 
     <li id="Hamburguesas">Hamburguesas</li> 
@@ -43,18 +47,18 @@ export const renderCategories = () => {
     <li id="Menor_precio">Menor precio</li> 
     `;
 
-  // liElements es el array que contiene a todos los li de ulList
   const liElements = ulList.querySelectorAll("li");
-
-  // Agrego dinámicamente eventos clic a todos mis li de ulList
+  // Agrego dinámicamente un manejador de clic a cada elemento de mi lista ulList
   liElements.forEach((liElement) => {
     liElement.addEventListener("click", () => {
       handleClick(liElement);
     });
   });
-  // Manejo el evento de clic agregando o sacando liActive condicionalmente
+
   const handleClick = (elemento) => {
+    // Al hacer clic sobre el elemento <li>, filtro por categoría
     filterByCategory(elemento.id);
+    // Agrego y saco la clase liActive para manejarlo con los estilos
     liElements.forEach((el) => {
       if (el.classList.contains("liActive")) {
         el.classList.remove("liActive");
