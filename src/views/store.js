@@ -7,12 +7,11 @@ export const viewGetProducts = () => {
 };
 
 export const renderListProducts = (productosIn) => {
-  // Primero filtro todos los productos traidos
   const burgers = productosIn.filter((el) => el.categoria === "Hamburguesas");
   const gaseosas = productosIn.filter((el) => el.categoria === "Gaseosas");
   const papas = productosIn.filter((el) => el.categoria === "Papas");
 
-  // Creo la función que renderiza una lista de productos por grupo
+  // Renderizo una lista de productos por categoria
   const renderProductsGroup = (products, title) => {
     if (products.length > 0) {
       const productsHTML = products.map((producto, index) => {
@@ -22,7 +21,7 @@ export const renderListProducts = (productosIn) => {
                         <img src='${producto.img}' />
                     </div>
                     <div>
-                        <h2>Nombre: ${producto.nombre}</h2>
+                        <h3>Nombre: ${producto.nombre}</h3>
                     </div>
                     <div>
                         <p>Precio: ${producto.precio}</p>
@@ -35,7 +34,8 @@ export const renderListProducts = (productosIn) => {
       });
       return `
       <section>
-          <h3>${title}</h3>
+          <h1>${title}</h1>
+          <hr />
           <div> 
               ${productsHTML.join("")}
           </div>
@@ -46,16 +46,16 @@ export const renderListProducts = (productosIn) => {
     }
   };
 
-  //   Renderizamos los productos
   const storeContainer = document.getElementById("store_containerId");
 
+  // Renderizamos los productos
   storeContainer.innerHTML = `
   ${renderProductsGroup(burgers, "Hamburguesas")}
   ${renderProductsGroup(gaseosas, "Gaseosas")}
   ${renderProductsGroup(papas, "Papas")}
   `;
 
-  //   Añadimos eventos
+  // Al hacer clic en el producto, lo vuelvo Activo
   const adEvents = (productsIn) => {
     if (productsIn) {
       productsIn.forEach((producto, index) => {
@@ -69,6 +69,7 @@ export const renderListProducts = (productosIn) => {
       });
     }
   };
+
   adEvents(burgers);
   adEvents(gaseosas);
   adEvents(papas);

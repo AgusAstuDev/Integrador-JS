@@ -8,9 +8,6 @@ const filterByCategory = (idCategory) => {
   const allProducts = getProductLocalStorage();
 
   switch (idCategory) {
-    // case categoriaActiva:
-    //   renderListProducts(allProducts);
-    //   break;
     case "Todo":
       renderListProducts(allProducts);
       break;
@@ -22,10 +19,12 @@ const filterByCategory = (idCategory) => {
       break;
     case "Mayor_precio":
       const resultMayor = allProducts.sort((a, b) => b.precio - a.precio);
+      console.log(resultMayor);
       renderListProducts(resultMayor);
       break;
     case "Menor_precio":
       const resultMenor = allProducts.sort((a, b) => a.precio - b.precio);
+      console.log(resultMenor);
       renderListProducts(resultMenor);
       break;
     default:
@@ -35,7 +34,6 @@ const filterByCategory = (idCategory) => {
 
 // Función que renderiza las categorías
 export const renderCategories = () => {
-  // Traigo el contenedor de mi lista
   const ulList = document.getElementById("listFilter");
 
   ulList.innerHTML = `
@@ -48,6 +46,7 @@ export const renderCategories = () => {
     `;
 
   const liElements = ulList.querySelectorAll("li");
+
   // Agrego dinámicamente un manejador de clic a cada elemento de mi lista ulList
   liElements.forEach((liElement) => {
     liElement.addEventListener("click", () => {
@@ -55,10 +54,10 @@ export const renderCategories = () => {
     });
   });
 
+  // Filtro por categoría. Agrego y saco la clase liActive para manejarlo con los estilos
   const handleClick = (elemento) => {
-    // Al hacer clic sobre el elemento <li>, filtro por categoría
     filterByCategory(elemento.id);
-    // Agrego y saco la clase liActive para manejarlo con los estilos
+
     liElements.forEach((el) => {
       if (el.classList.contains("liActive")) {
         el.classList.remove("liActive");

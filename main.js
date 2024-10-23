@@ -6,23 +6,34 @@ import { renderCategories } from "./src/services/categories";
 import { renderListProducts, viewGetProducts } from "./src/views/store";
 import "./style.css";
 
+// Renderizo las categorías y los productos almacenados
 renderCategories();
+viewGetProducts();
 
-// LOGICA DEL POPUP
-const buttonAdd = document.getElementById("header_btn_add");
+// Variables globales de estado
+export let categoriaActiva = null;
+export let productoActivo = null;
 
-buttonAdd.addEventListener("click", () => {
+// Funciones para setear estados
+export const setCategoriaActiva = (categoriaIn) => {
+  categoriaActiva = categoriaIn;
+};
+export const setProductoActivo = (productIn) => {
+  productoActivo = productIn;
+};
+
+// POPUP: Apertura y cierre del modal
+const button_add = document.getElementById("header_btn_add");
+const modal = document.getElementById("modal_popup");
+const button_delete = document.getElementById("popup_btn_delete");
+const accept_button = document.getElementById("popup_btn_accept");
+const cancel_button = document.getElementById("popup_btn_close");
+
+button_add.addEventListener("click", () => {
   openModal();
 });
 
-const cancel_button = document.getElementById("popup_btn_close");
-
-cancel_button.addEventListener("click", () => {
-  closeModal();
-});
-
 export const openModal = () => {
-  const modal = document.getElementById("modal_popup");
   modal.style.display = "flex";
 
   if (productoActivo) {
@@ -35,14 +46,13 @@ export const openModal = () => {
     img.value = productoActivo.img;
     categoria.value = productoActivo.categoria;
 
-    deleteButton.style.display = "block";
+    button_delete.style.display = "block";
   } else {
-    deleteButton.style.display = "none";
+    button_delete.style.display = "none";
   }
 };
 
 export const closeModal = () => {
-  const modal = document.getElementById("modal_popup");
   modal.style.display = "none";
   resetModal();
   setProductoActivo(null);
@@ -59,13 +69,24 @@ const resetModal = () => {
   categoria.value = "Seleccione una categoria";
 };
 
-// LOGICA BOTONES POPUP
-
-const acceptButton = document.getElementById("popup_btn_accept");
-acceptButton.addEventListener("click", () => {
+// Lógica de los botones del POPUP
+accept_button.addEventListener("click", () => {
   handleSaveModifyProduct();
   const allProducts = getProductLocalStorage();
   renderListProducts(allProducts);
+});
+
+cancel_button.addEventListener("click", () => {
+  closeModal();
+});
+
+button_delete.addEventListener("click", () => {
+  const allProducts = getProductLocalStorage();
+  const resultDelete = allProducts.filter((el) => el.id !== productoActivo.id);
+  localStorage.setItem("products", JSON.stringify(resultDelete));
+  const NewProducts = getProductLocalStorage();
+  renderListProducts(NewProducts);
+  closeModal();
 });
 
 const handleSaveModifyProduct = () => {
@@ -74,68 +95,27 @@ const handleSaveModifyProduct = () => {
     img = document.getElementById("img").value,
     categoria = document.getElementById("categoria").value;
 
-  let object = null;
-
-  if (productoActivo) {
-    object = {
-      ...productoActivo,
-      nombre,
-      precio,
-      img,
-      categoria,
-    };
-  } else {
-    object = {
-      id: new Date().toISOString(),
-      nombre,
-      precio,
-      img,
-      categoria,
-    };
-  }
-  setInLocalStorage(object);
-
+  const newProduct = {
+    id: productoActivo ? productoActivo.id : new Date().toISOString(),
+    nombre,
+    precio,
+    img,
+    categoria,
+  };
+  setInLocalStorage(newProduct);
   closeModal();
+  renderListProducts(getProductLocalStorage());
 };
 
-viewGetProducts();
-
-export let categoriaActiva = null;
-
-export const setCategoriaActiva = (categoriaIn) => {
-  categoriaActiva = categoriaIn;
-};
-
-export let productoActivo = null;
-
-export const setProductoActivo = (productIn) => {
-  productoActivo = productIn;
-};
-
-// Traigo button search
-
+// LÓGICA DE LA BÚSQUEDA
 const buttonSearch = document.getElementById("header_button_search");
 
 buttonSearch.addEventListener("click", () => {
   const inputHeaderSearch = document.getElementById("header_input_search");
   const allProducts = getProductLocalStorage();
-  // console.log(inputHeaderSearch.value);
   const result = allProducts.filter((el) =>
-    el.nombre.toLowerCase().includes(inputHeaderSearch.value)
+    el.nombre.toLowerCase().includes(inputHeaderSearch.value.toLowerCase())
   );
 
   renderListProducts(result);
-});
-
-// Eliminar producto
-
-const deleteButton = document.getElementById("popup_btn_delete");
-
-deleteButton.addEventListener("click", () => {
-  const allProducts = getProductLocalStorage();
-  const resultDelete = allProducts.filter((el) => el.id !== productoActivo.id);
-  localStorage.setItem("products", JSON.stringify(resultDelete));
-  const NewProducts = getProductLocalStorage();
-  renderListProducts(NewProducts);
-  closeModal();
 });
