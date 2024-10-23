@@ -4,6 +4,7 @@ import {
 } from "./src/persistence/localStorage";
 import { renderCategories } from "./src/services/categories";
 import { renderListProducts, viewGetProducts } from "./src/views/store";
+import Swal from "sweetalert2";
 import "./style.css";
 
 // Renderizo las categorías y los productos almacenados
@@ -81,12 +82,31 @@ cancel_button.addEventListener("click", () => {
 });
 
 button_delete.addEventListener("click", () => {
-  const allProducts = getProductLocalStorage();
-  const resultDelete = allProducts.filter((el) => el.id !== productoActivo.id);
-  localStorage.setItem("products", JSON.stringify(resultDelete));
-  const NewProducts = getProductLocalStorage();
-  renderListProducts(NewProducts);
-  closeModal();
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+      const allProducts = getProductLocalStorage();
+      const resultDelete = allProducts.filter(
+        (el) => el.id !== productoActivo.id
+      );
+      localStorage.setItem("products", JSON.stringify(resultDelete));
+      const NewProducts = getProductLocalStorage();
+      renderListProducts(NewProducts);
+      closeModal();
+    }
+  });
 });
 
 const handleSaveModifyProduct = () => {

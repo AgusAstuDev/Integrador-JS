@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 // LOCALE STORAGE
 
 export const getProductLocalStorage = () => {
@@ -22,4 +23,9 @@ export const setInLocalStorage = (productIn) => {
     productsInLocal.push(productIn);
   }
   localStorage.setItem("products", JSON.stringify(productsInLocal));
+  Swal.fire({
+    title: "Good job!",
+    text: "You clicked the button!",
+    icon: "success",
+  });
 };
