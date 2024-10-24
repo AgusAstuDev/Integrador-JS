@@ -10,6 +10,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: whitesmoke;
 }
 /* HEADER  */
 .header_container {
@@ -164,8 +165,10 @@ body {
 }
 /* MAIN STORE  */
 .main_store {
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
   height: auto;
-  background-color: whitesmoke;
   padding: 20px 40px;
 }
 

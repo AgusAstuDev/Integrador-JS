@@ -10,7 +10,7 @@ export const renderListProducts = (productosIn) => {
   const burgers = productosIn.filter((el) => el.categoria === "Hamburguesas");
   const gaseosas = productosIn.filter((el) => el.categoria === "Gaseosas");
   const papas = productosIn.filter((el) => el.categoria === "Papas");
-
+  console.log(productosIn);
   // Renderizo una lista de productos por categoria
   const renderProductsGroup = (products, title) => {
     if (products.length > 0) {
@@ -37,7 +37,11 @@ export const renderListProducts = (productosIn) => {
       </section>
       `;
     } else {
-      return "";
+      return `
+      <section class="section_category_cards_products">
+          <h1>No se han encontrado productos <br /> Añade uno!</h1>
+      </section>
+      `;
     }
   };
 
@@ -45,9 +49,14 @@ export const renderListProducts = (productosIn) => {
 
   // Renderizamos los productos
   storeContainer.innerHTML = `
-  ${renderProductsGroup(burgers, "Hamburguesas")}
+  ${
+    productosIn.length > 0
+      ? ` ${renderProductsGroup(burgers, "Hamburguesas")}
   ${renderProductsGroup(gaseosas, "Gaseosas")}
-  ${renderProductsGroup(papas, "Papas")}
+  ${renderProductsGroup(papas, "Papas")}`
+      : `${renderProductsGroup(burgers, "Hamburguesas")}`
+  }
+ 
   `;
 
   // Al hacer clic en el producto, lo vuelvo Activo

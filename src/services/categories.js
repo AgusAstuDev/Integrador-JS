@@ -1,4 +1,3 @@
-import { categoriaActiva } from "../../main";
 import { getProductLocalStorage } from "../persistence/localStorage";
 import { renderListProducts } from "../views/store";
 
