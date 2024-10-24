@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/assets/logo_food.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Food.js</title>
@@ -12,6 +12,7 @@
     <!-- HEADER  -->
     <header class="header_container">
       <div class="header_wrapper">
+        <!-- SECCION BUSCAR -->
         <div class="header_search">
           <button id="header_button_search">
             <img src="/assets/search_product.svg" width="30" height="30" />
@@ -22,12 +23,14 @@
             type="text"
           />
         </div>
+        <!-- SECCION AGREGAR  -->
         <div class="header_add">
           <button id="header_btn_add" class="header_btn_add">
             <p>Añadir producto</p>
             <img src="/assets/add_product.svg" width="60" height="60" />
           </button>
         </div>
+        <!-- LOGO HEADER  -->
         <div class="header_logo_container">
           <img src="/assets/logo_food.png" width="434" height="469" />
         </div>
@@ -41,8 +44,10 @@
         <!-- VIEW CATEGORÍAS -->
         <div class="main_categories">
           <aside>
-            <h2>Categorías</h2>
-            <ul id="listFilter"></ul>
+            <div>
+              <h2 class="title_categories">Categorías</h2>
+            </div>
+            <ul class="ulListFilter" id="listFilter"></ul>
           </aside>
         </div>
         <!-- VIEW STORE -->
@@ -80,6 +85,8 @@
         </div>
       </div>
     </main>
+
+    <!-- SCRIPT MAIN -->
     <script type="module" src="/main.js"></script>
   </body>
 </html>

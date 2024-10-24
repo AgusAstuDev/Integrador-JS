@@ -16,27 +16,22 @@ export const renderListProducts = (productosIn) => {
     if (products.length > 0) {
       const productsHTML = products.map((producto, index) => {
         return `
-                <div id="product-${producto.categoria}-${index}">
-                    <div> 
-                        <img src='${producto.img}' />
+                <div class="card_product" id="product-${producto.categoria}-${index}">
+                    <div class="card_container_img"> 
+                      <img src='${producto.img}' />
                     </div>
-                    <div>
-                        <h3>Nombre: ${producto.nombre}</h3>
-                    </div>
-                    <div>
-                        <p>Precio: ${producto.precio}</p>
-                    </div>
-                    <div>
-                        <p>Categoria: ${producto.categoria}</p>
+                    <div class="card_info_container">
+                      <h3>${producto.nombre}</h3>
+                      <p><strong>Precio:</strong> $${producto.precio}</p>
+                      <p><strong>Tipo:</strong> ${producto.categoria}</p>
                     </div>
                 </div>
                 `;
       });
       return `
-      <section>
+      <section class="section_category_cards_products">
           <h1>${title}</h1>
-          <hr />
-          <div> 
+          <div class="store_grid_container"> 
               ${productsHTML.join("")}
           </div>
       </section>

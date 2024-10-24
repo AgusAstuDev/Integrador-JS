@@ -25,6 +25,7 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: #1d1818;
+  border-bottom: solid 2px grey;
 }
 .header_search {
   width: 100%;
@@ -115,21 +116,106 @@ body {
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-template-columns: 0.4fr 1fr;
+  grid-template-columns: 200px 1fr;
 }
+/* CATEGORIAS  */
 .main_categories {
   width: 100%;
   height: auto;
-  background-color: blueviolet;
+  background-color: #2d2525;
+  border-right: solid 2px grey;
 }
-.main_store {
+.main_categories aside {
+  position: sticky;
+  top: 0;
   width: 100%;
+  height: 500px;
+  padding: 30px 20px;
+}
+.title_categories {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.ulListFilter li {
+  list-style: none;
+  cursor: pointer;
+  padding: 2px 0px;
+  color: rgba(255, 255, 255, 0.655);
+  font-weight: lighter;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+.ulListFilter li:hover {
+  text-decoration: underline;
+}
+.liActive {
+  color: white !important;
+  text-decoration: underline;
+}
+/* MAIN STORE  */
+.main_store {
   height: auto;
-  background-color: brown;
+  background-color: whitesmoke;
+  padding: 20px 40px;
 }
 
-.liActive {
+/* CARDS PRODUCT  */
+.store_grid_container {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: auto;
+  justify-items: center;
+  align-content: start;
+  padding: 15px;
+}
+.card_product {
+  width: 100%;
+  max-width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.card_product:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: translate(-0.5px, -0.5px);
+}
+.card_container_img {
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  overflow: hidden;
+}
+.card_container_img img {
+  width: 100%;
+  height: auto;
+  display: flex;
+  object-fit: cover;
+  object-position: center;
+}
+.card_info_container {
+  width: 100%;
+  height: auto;
+  padding: 5px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.card_info_container h3 {
+  font-size: 18px;
   text-decoration: underline;
+}
+.card_info_container p {
+  font-size: 16px;
 }
 
 .popup_container {
