@@ -65,7 +65,7 @@ const resetModal = () => {
     img = document.getElementById("img"),
     categoria = document.getElementById("categoria");
   nombre.value = "";
-  precio.value = 0;
+  precio.value = "";
   img.value = "";
   categoria.value = "Seleccione una categoria";
 };
