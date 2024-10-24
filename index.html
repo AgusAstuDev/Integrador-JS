@@ -57,13 +57,15 @@
       <!-- POPUP -->
       <div class="popup_container" id="modal_popup">
         <div class="popup_contain_container">
-          <div>
-            <h2>Agregar o modificar producto</h2>
-          </div>
+          <h2>Agregar o modificar producto</h2>
           <div class="popup_container_inputs">
-            <input placeholder="Ingrese un nombre" id="nombre" type="text" />
-            <input placeholder="Precio" value="0" id="precio" type="number" />
-            <input placeholder="Ingrese una imagen" id="img" type="text" />
+            <input placeholder="Nombre del producto" id="nombre" type="text" />
+            <input placeholder="Precio" id="precio" type="number" />
+            <input
+              placeholder="Imagen del producto (url)"
+              id="img"
+              type="text"
+            />
             <select id="categoria">
               <option>Seleccione una categoria</option>
               <option>Gaseosas</option>
@@ -71,15 +73,15 @@
               <option>Papas</option>
             </select>
           </div>
-          <div>
-            <button id="popup_btn_accept" class="popup_button aceptar">
-              Aceptar
+          <div class="popup_buttons_container">
+            <button id="popup_btn_accept" class="popup_button_aceptar">
+              <img src="/assets/add_popup.svg" width="50" height="50" />
             </button>
-            <button id="popup_btn_close" class="popup_button cancelar">
-              Cancelar
+            <button id="popup_btn_close" class="popup_button_cancelar">
+              <img src="/assets/close_popup.svg" width="30" height="30" />
             </button>
-            <button id="popup_btn_delete" class="popup_button eliminar">
-              Eliminar
+            <button id="popup_btn_delete" class="popup_button_eliminar">
+              <img src="/assets/delete_popup.svg" width="50" height="50" />
             </button>
           </div>
         </div>
